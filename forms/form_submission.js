@@ -1,12 +1,14 @@
 //taking in a url and a set of parameters, submits the parameters as a form
-function makeAndSubmitForm(url, params, options = {newTab: false, method: "post"}){
-    if ! 'newTab' in options
+function makeAndSubmitForm(url, params, options){
+    if(typeof options == "undefined")
+        options = {newTab: false, method: "post"};
+    if(! 'newTab' in options)
       options.newTab = false;
-    if ! 'method' in options:
+    if(! 'method' in options)
       options.method = "post";
     
     var f = document.createElement("form");
-    f.setAttribute('method',method);
+    f.setAttribute('method', options.method);
     f.setAttribute('action',url);
     
     if(options.newTab)
